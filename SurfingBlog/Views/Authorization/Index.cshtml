@@ -1,0 +1,48 @@
+﻿@model SurfingBlog.Models.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Авторизация";
+}
+
+
+@using (Html.BeginForm("Login", "Authorization", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="location-panel surfform">
+        <div class="panel location-panel surfform">
+            <div class="panel-heading surfheading">
+                Авторизация
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nickname)
+                    @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                </div>
+
+                <div class="form-group">
+                    @Html.CheckBoxFor(model => model.Remember, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(model => model.Remember)
+                </div>
+
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block surfheading">Войти</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="location-panel location-center">
+            Нет аккаунта?
+            @Html.ActionLink("Зарегистрироваться", "Index", "Registration", null, new { @class = "btn btn-default surfheading" })
+        </div>
+    </form>
+}
+

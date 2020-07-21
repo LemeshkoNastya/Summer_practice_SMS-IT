@@ -1,0 +1,77 @@
+﻿@using SurfingBlog.Models.DBModels
+@model SurfingBlog.Models.DBModels.Post
+
+@{
+    ViewBag.Title = "Блог любителей серфинга";
+}
+
+@if (Session["UserId"] != null)
+{
+    using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <form>
+            <div class="panel lenta surfform" top="50">
+                <div class="panel-heading surfheading">
+                    Добавление новой записи
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Text)
+                        @Html.TextAreaFor(model => model.Text, 10, 100, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Photo)
+                        <input name="imageData" type="file" accept="image/jpeg" />
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn">Добавить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    }
+}
+
+@foreach (var post in ViewBag.Posts)
+{
+    <div class="panel lenta surfform" top="50">
+        <div class="panel-heading surfheading">
+            @{
+                var photoUrl = SurfingBlog.Helpers.ImageUrlHelper.GetUrl(post.Author.Photo);
+                if (photoUrl != null)
+                {
+                    <img class="round" src="@Url.Content(photoUrl)" height="25" />
+                }
+                else
+                {
+                    <img src=@Url.Content("~/Content/Images/avatar.png") height="25" />
+                }
+            }
+
+            @post.Author.Nickname
+            <br>
+            @post.PublishDate
+
+        </div>
+
+        <div class="panel-body">
+            <p>@post.Text</p>
+
+            @if (@post.Photo != Guid.Empty)
+            {
+                var url = string.Format("~/Content/Images/Uploads/{0}.jpg", @post.Photo.ToString());
+
+                <div>
+                    <img class="full-width" src="@Url.Content(url)" width="800" />
+                </div>
+            }
+
+
+        </div>
+    </div>
+}

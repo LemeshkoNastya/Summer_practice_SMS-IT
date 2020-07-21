@@ -1,0 +1,79 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.surfheading {
+    background-color: #c8d3d9;
+}
+
+.surfform {
+    border-color: #c8d3d9;
+}
+
+.location-panel {
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+    width: 300px;
+    height: 350px;
+    margin-top: 50px;
+}
+
+.local-register {
+    margin-top: 50px;
+}
+
+.location-panel-reg {
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+    width: 500px;
+    margin-top: 50px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+label {
+    width: 100%;
+}
+
+.add-post-area {
+    width: 100%;
+}
+
+.lenta {
+    margin: auto;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.lenta-news {
+    margin-top: 15px;
+}
+
+.text-color {
+    color: #000000;
+}
